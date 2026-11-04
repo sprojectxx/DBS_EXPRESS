@@ -111,10 +111,12 @@ function EmployersPage() {
   </RouteLayout>
 }
 
+const individualPricingHeaders = ['Check', 'Gov fee', 'Admin fee', 'Total']
+
 const individualPricingRows = [
-  ['Basic', '£20.00', '£22.00', '£42.00'],
-  ['Volunteer', '£0.00', '£18.00', '£18.00'],
-  ['Digital ID', 'None', '£6.50', '£6.50'],
+  ['Basic', '£20.00', '£22.00', '£42.00 (no change)'],
+  ['Volunteer', '£0.00', '£18.00', '£18.00 (no change)'],
+  ['Digital ID', 'None', '£6.50', '£6.50 (no change)'],
 ]
 
 function IndividualsPricingTable() {
@@ -123,18 +125,28 @@ function IndividualsPricingTable() {
       <table className="route-table">
         <thead>
           <tr>
-            <th>Check</th>
-            <th>Gov fee</th>
-            <th>Admin fee</th>
-            <th>Total</th>
+            {individualPricingHeaders.map((header) => (
+              <th key={header}>{header}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {individualPricingRows.map((row) => (
             <tr key={row[0]}>
               {row.map((cell, idx) => (
-                <td key={idx} style={idx === 3 ? { fontWeight: 700 } : undefined}>
-                  {cell}
+                <td
+                  key={idx}
+                  data-label={individualPricingHeaders[idx]}
+                  className={idx === 0 ? 'route-table__cell-tier' : idx === 3 ? 'route-table__cell-total' : undefined}
+                >
+                  {idx === 3 && cell.includes('(no change)') ? (
+                    <span className="route-table__total-wrap">
+                      <span className="route-table__total-amount">{cell.replace(' (no change)', '')}</span>
+                      <span className="route-table__no-change-tag">(no change)</span>
+                    </span>
+                  ) : (
+                    cell
+                  )}
                 </td>
               ))}
             </tr>
@@ -164,16 +176,18 @@ function IndividualsPage() {
   </RouteLayout>
 }
 
+const pricingHeaders = ['Tier', 'Gov fee', 'Admin fee', 'Total']
+
 const basicStandardPricingRows = [
-  ['Tier 1 (1–99 a year)', '£20.00', '£17.70', '£37.70'],
-  ['Tier 2 (100–499 a year)', '£20.00', '£15.30', '£35.30'],
-  ['Tier 3 (500–1,499 a year)', '£20.00', '£14.10', '£34.10'],
+  ['Tier 1 (1–99 a year)', '£20.00', '£17.70', '£37.70 (no change)'],
+  ['Tier 2 (100–499 a year)', '£20.00', '£15.30', '£35.30 (no change)'],
+  ['Tier 3 (500–1,499 a year)', '£20.00', '£14.10', '£34.10 (no change)'],
 ]
 
 const enhancedPricingRows = [
-  ['Tier 1 (1–99 a year)', '£41.00', '£24.70', '£65.70'],
-  ['Tier 2 (100–499 a year)', '£41.00', '£22.30', '£63.30'],
-  ['Tier 3 (500–1,499 a year)', '£41.00', '£21.10', '£62.10'],
+  ['Tier 1 (1–99 a year)', '£41.00', '£24.70', '£65.70 (no change)'],
+  ['Tier 2 (100–499 a year)', '£41.00', '£22.30', '£63.30 (no change)'],
+  ['Tier 3 (500–1,499 a year)', '£41.00', '£21.10', '£62.10 (no change)'],
 ]
 
 function PricingTable({ enhanced = false }: { enhanced?: boolean }) {
@@ -183,18 +197,28 @@ function PricingTable({ enhanced = false }: { enhanced?: boolean }) {
       <table className="route-table">
         <thead>
           <tr>
-            <th>Tier</th>
-            <th>Gov fee</th>
-            <th>Admin fee</th>
-            <th>Total</th>
+            {pricingHeaders.map((header) => (
+              <th key={header}>{header}</th>
+            ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => (
             <tr key={row[0]}>
               {row.map((cell, idx) => (
-                <td key={idx} style={idx === 3 ? { fontWeight: 700 } : undefined}>
-                  {cell}
+                <td
+                  key={idx}
+                  data-label={pricingHeaders[idx]}
+                  className={idx === 0 ? 'route-table__cell-tier' : idx === 3 ? 'route-table__cell-total' : undefined}
+                >
+                  {idx === 3 && cell.includes('(no change)') ? (
+                    <span className="route-table__total-wrap">
+                      <span className="route-table__total-amount">{cell.replace(' (no change)', '')}</span>
+                      <span className="route-table__no-change-tag">(no change)</span>
+                    </span>
+                  ) : (
+                    cell
+                  )}
                 </td>
               ))}
             </tr>
@@ -212,6 +236,10 @@ function PricingPage() {
       <section className="route-price-card">
         <h2>Clear, transparent DBS check pricing.</h2>
         <p>Official government disclosure fees with discounted administration charges. Full compliance with zero hidden subscription costs.</p>
+        <div className="pricing-status-notice">
+          <span className="pricing-status-notice__badge">No change in total prices</span>
+          <span className="pricing-status-notice__text">All total fees to clients remain unchanged across every volume tier.</span>
+        </div>
         <h3>Basic & Standard DBS Checks</h3>
         <p>Priced by annual submission volume. Includes government fees and digital processing.</p>
         <PricingTable />
@@ -220,7 +248,7 @@ function PricingPage() {
         <PricingTable enhanced />
       </section>
       <SectionList className="pricing-billing-panel" sections={[{ title: 'Pricing & billing details', bullets: [
-        'The total client price combines the official DBS government fee plus our transparent administration fee.',
+        'Total client prices remain unchanged: Any statutory government fee revisions are fully balanced by our discounted administration rates, resulting in no change to total client costs.',
         'Administration fees drop automatically as annual submission tiers increase: from £17.70 in Tier 1 down to £14.10 in Tier 3 (and from £24.70 down to £21.10 for Enhanced).',
         'Employers can choose whether the business covers 100% of the check fee, splits a designated percentage with the applicant, or has the applicant pay directly.',
         'The UK government waives the disclosure fee for eligible non-remunerated voluntary roles (£0.00 gov fee). Only a flat £18.00 portal administration fee applies.',
