@@ -4,7 +4,6 @@ import { HeroDashboard } from '../components/HeroDashboard'
 import { IntegrationsSection } from '../components/IntegrationsSection'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
-import { TestimonialsSection } from '../components/TestimonialsSection'
 import { WorkflowSection } from '../components/WorkflowSection'
 import { useScrollRevealContainer } from '../hooks/useScrollReveal'
 
@@ -233,7 +232,6 @@ export function HomePage() {
         <CheckTypesSection />
         <WorkflowSection />
         <IntegrationsSection />
-        <TestimonialsSection />
         <PricingSection />
         <FaqSection />
         <NextStepsSection />

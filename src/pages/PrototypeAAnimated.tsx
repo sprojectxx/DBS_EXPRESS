@@ -6,7 +6,6 @@ import { useReveal } from '../hooks/useScrollReveal'
 import { StatisticsSection } from '../components/StatisticsSection'
 import { WorkflowSection } from '../components/WorkflowSection'
 import { IntegrationsSection } from '../components/IntegrationsSection'
-import { TestimonialsSection } from '../components/TestimonialsSection'
 import { CookieConsent } from '../components/CookieConsent'
 
 const checkTypes = ['Basic DBS check', 'Standard DBS check', 'Enhanced DBS check']
@@ -257,7 +256,6 @@ export function PrototypeAAnimated() {
         <WorkflowSection />
         <IntegrationsSection />
         <StatisticsSection />
-        <TestimonialsSection />
         <AnimatedPricing />
         <AnimatedNextSteps />
       </main>

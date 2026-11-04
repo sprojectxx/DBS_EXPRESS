@@ -5,7 +5,6 @@ import { useScrollRevealContainer } from '../hooks/useScrollReveal'
 import { StatisticsSection } from '../components/StatisticsSection'
 import { WorkflowSection } from '../components/WorkflowSection'
 import { IntegrationsSection } from '../components/IntegrationsSection'
-import { TestimonialsSection } from '../components/TestimonialsSection'
 import { CookieConsent } from '../components/CookieConsent'
 import { HeroDashboard } from '../components/HeroDashboard'
 
@@ -302,8 +301,7 @@ export function PrototypePage({ variant }: PrototypePageProps) {
             <WorkflowSection />
             <IntegrationsSection />
             <StatisticsSection />
-            <TestimonialsSection />
-            <PricingSection variant={variant} />
+                <PricingSection variant={variant} />
             <NextStepsSection variant={variant} />
           </>
         ) : variant === 'b' ? (
@@ -313,16 +311,14 @@ export function PrototypePage({ variant }: PrototypePageProps) {
             <WorkflowSection />
             <StatisticsSection />
             <IntegrationsSection />
-            <TestimonialsSection />
-            <PricingSection variant={variant} />
+                <PricingSection variant={variant} />
           </>
         ) : (
           <>
             <CheckTypesSection variant={variant} />
             <WorkflowSection />
             <IntegrationsSection />
-            <TestimonialsSection />
-            <StatisticsSection />
+                <StatisticsSection />
             <PricingSection variant={variant} />
             <NextStepsSection variant={variant} />
           </>
