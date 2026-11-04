@@ -53,7 +53,7 @@ const faqItems = [
   ['How long does individual processing take?', 'Most Basic checks are completed in under 24–48 hours when submitted using digital ID verification before 4pm UK time.'],
   ['Will I receive an official paper certificate?', 'Yes. An official DBS paper certificate is dispatched by post to your home address, and a digital summary is accessible online.'],
   ['What is the Update Service?', 'The DBS Update Service allows you to keep your certificate up to date online for £13/year, letting future employers check your status instantly.'],
-  ['Where can I get help with my application?', 'Contact the DB-Express team for support with choosing a check or completing an application.'],
+  ['Where can I get help with my application?', 'Contact the DBS-Express team for support with choosing a check or completing an application.'],
 ]
 
 function PageHero({ eyebrow, title, description }: { eyebrow?: string; title: string; description: string }) {

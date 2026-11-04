@@ -22,14 +22,14 @@ const checkDetails = [
   {
     image: '/assets/compliance-documents.jpg',
     badge: 'Regulated Roles',
-    description: 'Review Standard DBS information on the DB-Express employer page.',
+    description: 'Review Standard DBS information on the DBS-Express employer page.',
     href: `${sourceSite}/employers`,
     linkLabel: 'Employer check information',
   },
   {
     image: '/assets/fast-turnaround.jpg',
     badge: 'Comprehensive',
-    description: 'Review Enhanced DBS information on the DB-Express employer page.',
+    description: 'Review Enhanced DBS information on the DBS-Express employer page.',
     href: `${sourceSite}/employers`,
     linkLabel: 'Employer check information',
   },
@@ -96,7 +96,7 @@ function AnimatedCheckTypes() {
           <span /> DBS CHECKS
         </p>
         <h2 id="anim-check-types-title">Compare the available check types.</h2>
-        <p>Read the DB-Express information for each check before continuing.</p>
+        <p>Read the DBS-Express information for each check before continuing.</p>
       </div>
       <div className="check-types-grid">
         {checkTypes.map((checkType, index) => (
@@ -218,7 +218,7 @@ function AnimatedNextSteps() {
     >
       <div className="reveal-block" ref={ref}>
         <p className="eyebrow">
-          <span /> DB-EXPRESS
+          <span /> DBS-EXPRESS
         </p>
         <h2 id="anim-next-steps-title">Continue to the service when you're ready.</h2>
       </div>
@@ -265,7 +265,7 @@ export function PrototypeAAnimated() {
         <span aria-hidden="true">i</span>
         <p>
           This is an experimental animation variant of Prototype A. Applications and account
-          access are handled by the DB-Express service.
+          access are handled by the DBS-Express service.
         </p>
       </div>
     </div>

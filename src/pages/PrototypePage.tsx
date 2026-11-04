@@ -34,14 +34,14 @@ const prototypeACheckDetails = [
   {
     image: '/assets/compliance-documents.jpg',
     badge: 'Regulated Roles',
-    description: 'Review Standard DBS information on the DB-Express employer page.',
+    description: 'Review Standard DBS information on the DBS-Express employer page.',
     href: `${sourceSite}/employers`,
     linkLabel: 'Employer check information',
   },
   {
     image: '/assets/fast-turnaround.jpg',
     badge: 'Comprehensive',
-    description: 'Review Enhanced DBS information on the DB-Express employer page.',
+    description: 'Review Enhanced DBS information on the DBS-Express employer page.',
     href: `${sourceSite}/employers`,
     linkLabel: 'Employer check information',
   },
@@ -141,8 +141,8 @@ function CheckTypesSection({ variant }: { variant: PrototypeVariant }) {
         </h2>
         <p>
           {variant === 'a'
-            ? 'Read the DB-Express information for each check before continuing.'
-            : 'Check eligibility and application details with DB-Express before applying.'}
+            ? 'Read the DBS-Express information for each check before continuing.'
+            : 'Check eligibility and application details with DBS-Express before applying.'}
         </p>
       </div>
       <div className="check-types-grid reveal-on-scroll">
@@ -265,7 +265,7 @@ function NextStepsSection({ variant }: { variant: PrototypeVariant }) {
       aria-labelledby="next-steps-title"
     >
       <div>
-        <p className="eyebrow"><span /> DB-EXPRESS</p>
+        <p className="eyebrow"><span /> DBS-EXPRESS</p>
         <h2 id="next-steps-title">Continue to the service when you're ready.</h2>
       </div>
       <div className="next-steps-actions">
@@ -301,7 +301,7 @@ export function PrototypePage({ variant }: PrototypePageProps) {
             <WorkflowSection />
             <IntegrationsSection />
             <StatisticsSection />
-                <PricingSection variant={variant} />
+            <PricingSection variant={variant} />
             <NextStepsSection variant={variant} />
           </>
         ) : variant === 'b' ? (
@@ -311,14 +311,14 @@ export function PrototypePage({ variant }: PrototypePageProps) {
             <WorkflowSection />
             <StatisticsSection />
             <IntegrationsSection />
-                <PricingSection variant={variant} />
+            <PricingSection variant={variant} />
           </>
         ) : (
           <>
             <CheckTypesSection variant={variant} />
             <WorkflowSection />
             <IntegrationsSection />
-                <StatisticsSection />
+            <StatisticsSection />
             <PricingSection variant={variant} />
             <NextStepsSection variant={variant} />
           </>
@@ -328,7 +328,7 @@ export function PrototypePage({ variant }: PrototypePageProps) {
       <CookieConsent />
       <div className="preview-disclaimer">
         <span aria-hidden="true">i</span>
-        <p>This is a design preview. Applications and account access are handled by the DB-Express service.</p>
+        <p>This is a design preview. Applications and account access are handled by the DBS-Express service.</p>
       </div>
     </div>
   )

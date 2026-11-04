@@ -47,7 +47,7 @@ export function PrototypePicker() {
           <span>DBS-Express.</span>
         </h1>
         <p>
-          Compare three visual approaches for the DB-Express website. Each preview presents
+          Compare three visual approaches for the DBS-Express website. Each preview presents
           the same check types in a different design direction.
         </p>
       </section>

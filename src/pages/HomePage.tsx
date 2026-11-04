@@ -113,7 +113,7 @@ function PricingSection() {
         <p className="eyebrow"><span /> PRICING</p>
         <h2 id="pricing-title">See the latest pricing for your check.</h2>
         <p>
-          Check the current fees and volume options directly with DB-Express before you apply.
+          Check the current fees and volume options directly with DBS-Express before you apply.
         </p>
       </div>
       <a className="button button-primary" href="/pricing">
@@ -162,10 +162,10 @@ function FaqSection() {
         <details className="faq-item">
           <summary>Where can I get help with my application?</summary>
           <p>
-            Contact the DB-Express team for support with choosing a check or completing an
+            Contact the DBS-Express team for support with choosing a check or completing an
             application.{' '}
             <a href="/contact">
-              Contact DB-Express <span aria-hidden="true">↗</span>
+              Contact DBS-Express <span aria-hidden="true">↗</span>
             </a>
           </p>
         </details>
@@ -180,7 +180,7 @@ function NextStepsSection() {
       <div>
         <p className="eyebrow"><span /> NEED A HAND?</p>
         <h2 id="next-steps-title">Not sure which check you need?</h2>
-        <p className="next-steps-copy">The DB-Express team can help you find the right place to start.</p>
+        <p className="next-steps-copy">The DBS-Express team can help you find the right place to start.</p>
       </div>
       <div className="next-steps-actions">
         <a className="button button-primary" href="/contact">
