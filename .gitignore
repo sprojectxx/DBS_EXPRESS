@@ -26,3 +26,12 @@ dist-ssr
 # Media & Videos
 *.mp4
 *.webm
+
+# Vercel
+.vercel
+
+# Agent & IDE Harness
+.agent
+.agents
+.gemini
+.gsd
