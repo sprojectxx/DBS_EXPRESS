@@ -50,11 +50,11 @@ function Hero() {
           find the right next step for you.
         </p>
         <div className="hero-actions">
-          <a className="button button-primary" href="#services">
-            Explore DBS checks <span aria-hidden="true">↓</span>
+          <a className="button button-primary" href="/individuals">
+            Apply for my own check <span aria-hidden="true">↗</span>
           </a>
           <a className="button button-secondary" href={signUpUrl} target="_blank" rel="noreferrer">
-            Make an application <span aria-hidden="true">↗</span>
+            Register my organisation <span aria-hidden="true">↗</span>
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </div>
