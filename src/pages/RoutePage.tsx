@@ -111,11 +111,52 @@ function EmployersPage() {
   </RouteLayout>
 }
 
+const individualPricingRows = [
+  ['Basic', '£20.00', '£22.00', '£42.00'],
+  ['Volunteer', '£0.00', '£18.00', '£18.00'],
+  ['Digital ID', 'None', '£6.50', '£6.50'],
+]
+
+function IndividualsPricingTable() {
+  return (
+    <div className="route-table-wrap" tabIndex={0} aria-label="Individual DBS check pricing">
+      <table className="route-table">
+        <thead>
+          <tr>
+            <th>Check</th>
+            <th>Gov fee</th>
+            <th>Admin fee</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {individualPricingRows.map((row) => (
+            <tr key={row[0]}>
+              {row.map((cell, idx) => (
+                <td key={idx} style={idx === 3 ? { fontWeight: 700 } : undefined}>
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
 function IndividualsPage() {
   return <RouteLayout pageClassName="route-page--individuals">
     <PageHero eyebrow="INDIVIDUALS" title="Apply for your individual DBS check" description="Starting a new job, applying for a voluntary role, or completing a university placement? Apply online for your official DBS certificate in under 10 minutes with same-day processing for submissions before 4pm UK time." />
+    <div className="route-page__pricing section-pad" style={{ maxWidth: '820px', marginInline: 'auto' }}>
+      <section className="route-price-card">
+        <h2>Individual check pricing</h2>
+        <p>Fixed, upfront fees with zero hidden charges. All government statutory charges included.</p>
+        <IndividualsPricingTable />
+      </section>
+    </div>
     <SectionList sections={[
-      { title: 'Transparent individual rates', paragraphs: ['Fixed, upfront fees with zero hidden charges. All government statutory charges included.', 'Basic DBS Check — £42.00 (£21.50 Gov Fee + £20.50 Admin Fee). Unspent criminal convictions and conditional cautions. Anyone can apply directly online.', 'Volunteer DBS Check — £18.00 (£0.00 Gov Fee waived + £18.00 Admin Fee). Eligible non-remunerated voluntary roles with charities, schools, and community groups.', 'Digital ID Verification — £6.50. Verifies your passport or driving licence digitally in 3 minutes without posting physical documents.'] },
+      { title: 'Transparent individual rates', paragraphs: ['Fixed, upfront fees with zero hidden charges. All government statutory charges included.', 'Basic DBS Check — £42.00 (£20.00 Gov Fee + £22.00 Admin Fee). Unspent criminal convictions and conditional cautions. Anyone can apply directly online.', 'Volunteer DBS Check — £18.00 (£0.00 Gov Fee waived + £18.00 Admin Fee). Eligible non-remunerated voluntary roles with charities, schools, and community groups.', 'Digital ID Verification — £6.50. Verifies your passport or driving licence digitally in 3 minutes without posting physical documents.'] },
       { title: 'Check eligibility & options', paragraphs: ['Under statutory rules, individuals can apply directly for a Basic DBS check. Standard and Enhanced checks require an employer request.'] },
       { title: 'Fast & paperless online applications', paragraphs: ['Our online application form takes under 10 minutes to complete. Digital identity checks eliminate the need to post original identity documents.'] },
     ]} />
@@ -123,30 +164,68 @@ function IndividualsPage() {
   </RouteLayout>
 }
 
-const pricingRows = [
-  ['Tier 1', '1 - 99 checks / yr', '£21.50', '£16.20', '£37.70'],
-  ['Tier 2', '100 - 499 checks / yr', '£21.50', '£13.80', '£35.30'],
-  ['Tier 3', '500 - 1,499 checks / yr', '£21.50', '£12.60', '£34.10'],
+const basicStandardPricingRows = [
+  ['Tier 1 (1–99 a year)', '£20.00', '£17.70', '£37.70'],
+  ['Tier 2 (100–499 a year)', '£20.00', '£15.30', '£35.30'],
+  ['Tier 3 (500–1,499 a year)', '£20.00', '£14.10', '£34.10'],
+]
+
+const enhancedPricingRows = [
+  ['Tier 1 (1–99 a year)', '£41.00', '£24.70', '£65.70'],
+  ['Tier 2 (100–499 a year)', '£41.00', '£22.30', '£63.30'],
+  ['Tier 3 (500–1,499 a year)', '£41.00', '£21.10', '£62.10'],
 ]
 
 function PricingTable({ enhanced = false }: { enhanced?: boolean }) {
-  const govFee = enhanced ? '£49.50' : '£21.50'
-  const rows = enhanced ? pricingRows.map((row) => [row[0], row[1], govFee, row[3], `£${Number(row[4].slice(1)) + 28}`]) : pricingRows
-  if (enhanced) rows.splice(0, rows.length, ['Tier 1', '1 - 99 checks / yr', '£49.50', '£16.20', '£65.70'], ['Tier 2', '100 - 499 checks / yr', '£49.50', '£13.80', '£63.30'], ['Tier 3', '500 - 1,499 checks / yr', '£49.50', '£12.60', '£62.10'])
-  return <div className="route-table-wrap" tabIndex={0} aria-label={`${enhanced ? 'Enhanced' : 'Basic and Standard'} DBS pricing`}>
-    <table className="route-table">
-      <thead><tr><th>Volume Tier</th><th>Annual Volume</th><th>Gov. Fee</th><th>Admin Fee</th><th>Total to Client</th></tr></thead>
-      <tbody>{rows.map((row) => <tr key={row[0]}>{row.map((cell) => <td key={cell}>{cell}</td>)}</tr>)}</tbody>
-    </table>
-  </div>
+  const rows = enhanced ? enhancedPricingRows : basicStandardPricingRows
+  return (
+    <div className="route-table-wrap" tabIndex={0} aria-label={`${enhanced ? 'Enhanced' : 'Basic and Standard'} DBS pricing`}>
+      <table className="route-table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Gov fee</th>
+            <th>Admin fee</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row[0]}>
+              {row.map((cell, idx) => (
+                <td key={idx} style={idx === 3 ? { fontWeight: 700 } : undefined}>
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
 }
 
 function PricingPage() {
   return <RouteLayout>
     <PageHero eyebrow="PRICING" title="Official DBS check pricing" description="Government statutory fees paired with clear, volume-discounted administration rates. Transparent pricing with zero hidden subscription charges." />
     <div className="route-page__pricing section-pad">
-      <section className="route-price-card"><h2>Clear, transparent DBS check pricing.</h2><p>Official government disclosure fees with discounted administration charges. Full compliance with zero hidden subscription costs.</p><h3>Basic & Standard DBS Checks</h3><p>Priced by annual submission volume. Includes government fees and digital processing.</p><PricingTable /><h3>Enhanced DBS Checks</h3><p>For regulated activity roles in education, healthcare, childcare, and vulnerable adult care.</p><PricingTable enhanced /></section>
-      <SectionList className="pricing-billing-panel" sections={[{ title: 'Pricing & billing details', bullets: ['The total client price combines the official DBS government fee plus our transparent administration fee, inclusive of VAT.', 'Administration fees drop automatically as annual submission tiers increase: from £16.20 in Tier 1 down to £12.60 in Tier 3.', 'Employers can choose whether the business covers 100% of the check fee, splits a designated percentage with the applicant, or has the applicant pay directly.', 'The UK government waives the disclosure fee for eligible non-remunerated voluntary roles (£0.00 gov fee). Only a flat £18.00 portal administration fee applies.', 'Digital ID allows candidates to securely verify their passport or driving licence and address from their phone.'] }]} />
+      <section className="route-price-card">
+        <h2>Clear, transparent DBS check pricing.</h2>
+        <p>Official government disclosure fees with discounted administration charges. Full compliance with zero hidden subscription costs.</p>
+        <h3>Basic & Standard DBS Checks</h3>
+        <p>Priced by annual submission volume. Includes government fees and digital processing.</p>
+        <PricingTable />
+        <h3>Enhanced DBS Checks</h3>
+        <p>For regulated activity roles in education, healthcare, childcare, and vulnerable adult care.</p>
+        <PricingTable enhanced />
+      </section>
+      <SectionList className="pricing-billing-panel" sections={[{ title: 'Pricing & billing details', bullets: [
+        'The total client price combines the official DBS government fee plus our transparent administration fee.',
+        'Administration fees drop automatically as annual submission tiers increase: from £17.70 in Tier 1 down to £14.10 in Tier 3 (and from £24.70 down to £21.10 for Enhanced).',
+        'Employers can choose whether the business covers 100% of the check fee, splits a designated percentage with the applicant, or has the applicant pay directly.',
+        'The UK government waives the disclosure fee for eligible non-remunerated voluntary roles (£0.00 gov fee). Only a flat £18.00 portal administration fee applies.',
+        'Digital ID allows candidates to securely verify their passport or driving licence and address from their phone.'
+      ] }]} />
     </div>
     <CtaBand title="Ready to start your submission?" description="Set up an account in under 10 minutes. Submissions received before 4pm UK time are processed same-day." />
   </RouteLayout>
