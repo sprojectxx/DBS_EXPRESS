@@ -135,7 +135,7 @@ function PricingTable({ enhanced = false }: { enhanced?: boolean }) {
   if (enhanced) rows.splice(0, rows.length, ['Tier 1', '1 - 99 checks / yr', '£49.50', '£16.20', '£65.70'], ['Tier 2', '100 - 499 checks / yr', '£49.50', '£13.80', '£63.30'], ['Tier 3', '500 - 1,499 checks / yr', '£49.50', '£12.60', '£62.10'])
   return <div className="route-table-wrap" tabIndex={0} aria-label={`${enhanced ? 'Enhanced' : 'Basic and Standard'} DBS pricing`}>
     <table className="route-table">
-      <thead><tr><th>Volume Tier</th><th>Annual Volume</th><th>Gov. Fee</th><th>Admin Fee (inc. VAT)</th><th>Total to Client</th></tr></thead>
+      <thead><tr><th>Volume Tier</th><th>Annual Volume</th><th>Gov. Fee</th><th>Admin Fee</th><th>Total to Client</th></tr></thead>
       <tbody>{rows.map((row) => <tr key={row[0]}>{row.map((cell) => <td key={cell}>{cell}</td>)}</tr>)}</tbody>
     </table>
   </div>

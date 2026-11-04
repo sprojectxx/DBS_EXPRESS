@@ -116,9 +116,38 @@ function PricingSection() {
           Check the current fees and volume options directly with DBS-Express before you apply.
         </p>
       </div>
-      <a className="button button-primary" href="/pricing">
-        View current pricing <span aria-hidden="true">↗</span>
-      </a>
+      <div className="pricing-cards-grid">
+        <div className="pricing-card">
+          <div className="pricing-card__header">
+            <span className="pricing-card__badge">Basic checks</span>
+            <div className="pricing-card__price">
+              <span className="pricing-card__prefix">from</span>
+              <span className="pricing-card__amount">£20.00</span>
+            </div>
+          </div>
+          <p className="pricing-card__desc">
+            Statutory disclosure for any job role or personal reference. Covers unspent convictions.
+          </p>
+          <a className="button button-primary pricing-card__btn" href="/pricing">
+            View pricing <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div className="pricing-card">
+          <div className="pricing-card__header">
+            <span className="pricing-card__badge">Enhanced</span>
+            <div className="pricing-card__price">
+              <span className="pricing-card__prefix">from</span>
+              <span className="pricing-card__amount">£41.00</span>
+            </div>
+          </div>
+          <p className="pricing-card__desc">
+            For eligible roles in healthcare, education, and regulated activity with vulnerable groups.
+          </p>
+          <a className="button button-primary pricing-card__btn" href="/pricing">
+            View pricing <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
     </section>
   )
 }
