@@ -122,7 +122,7 @@ function PricingSection() {
             <span className="pricing-card__badge">Basic checks</span>
             <div className="pricing-card__price">
               <span className="pricing-card__prefix">from</span>
-              <span className="pricing-card__amount">£20.00</span>
+              <span className="pricing-card__amount">£42.00</span>
             </div>
           </div>
           <p className="pricing-card__desc">
@@ -137,7 +137,7 @@ function PricingSection() {
             <span className="pricing-card__badge">Enhanced</span>
             <div className="pricing-card__price">
               <span className="pricing-card__prefix">from</span>
-              <span className="pricing-card__amount">£41.00</span>
+              <span className="pricing-card__amount">£73.00</span>
             </div>
           </div>
           <p className="pricing-card__desc">

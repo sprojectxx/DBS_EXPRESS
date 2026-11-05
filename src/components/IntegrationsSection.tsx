@@ -2,32 +2,40 @@ import { useState, type KeyboardEvent } from 'react'
 
 const researchFindings = [
   {
-    category: 'Recruitment practice',
-    title: 'More applications do not guarantee better shortlists.',
-    metric: '58% / 33%',
-    metricLabel: 'unsuitable / suitable application increases',
-    href: 'https://www.cipd.org/uk/knowledge/reports/resourcing-surveys/',
+    category: 'Candidate integrity',
+    title: 'CV claims deserve verification.',
+    metric: '18%',
+    metricLabel:
+      'of UK respondents said they or someone they knew had lied on a CV or job application in the previous 12 months.',
+    source: 'Source: Cifas Fraud Behaviours Survey, 2025.',
+    href: 'https://www.cifas.org.uk/',
   },
   {
-    category: 'DBS eligibility',
-    title: 'The role determines the right DBS level.',
-    metric: 'ROLE-LED',
-    metricLabel: 'eligibility follows the work involved',
-    href: 'https://www.gov.uk/government/collections/dbs-eligibility-guidance',
+    category: 'Identity security',
+    title: 'Identity fraud remains a major UK risk.',
+    metric: '54%',
+    metricLabel:
+      'of reported fraud cases recorded in the Cifas National Fraud Database in 2025 involved identity fraud.',
+    source: 'Source: Cifas Fraudscape 2026.',
+    href: 'https://www.cifas.org.uk/newsroom/fraudscape',
   },
   {
     category: 'Right to work',
-    title: 'Right-to-work checks come before employment.',
-    metric: 'BEFORE HIRE',
-    metricLabel: 'a prescribed employer check',
+    title: 'Compliance failures carry serious financial consequences.',
+    metric: '£74M+',
+    metricLabel:
+      'in civil penalties issued to more than 1,200 businesses for employing people illegally during January–June 2026.',
+    source: 'Source: UK Home Office, 2026.',
     href: 'https://www.gov.uk/government/publications/right-to-work-checks-employers-guide',
   },
   {
-    category: 'Candidate privacy',
-    title: 'Screening should be necessary and proportionate.',
-    metric: 'NEED-TO-KNOW',
-    metricLabel: 'collect only relevant information',
-    href: 'https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/employment/recruitment-and-selection/pre-employment-vetting-of-candidates/',
+    category: 'Employer responsibility',
+    title: "Verification is every employer's responsibility.",
+    metric: '89%',
+    metricLabel:
+      'of surveyed UK employers understood that employers are responsible for carrying out right-to-work checks.',
+    source: 'Source: UK Home Office employer research, 2025.',
+    href: 'https://www.gov.uk/government/collections/dbs-eligibility-guidance',
   },
 ]
 
@@ -145,6 +153,9 @@ export function IntegrationsSection() {
                 >
                   <strong className="fanned-card__metric-val">{finding.metric}</strong>
                   <span className="fanned-card__metric-label">{finding.metricLabel}</span>
+                  {finding.source && (
+                    <span className="fanned-card__source">{finding.source}</span>
+                  )}
                 </div>
               </a>
             )
