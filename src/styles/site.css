@@ -5462,6 +5462,10 @@ html {
   content: "Contact";
 }
 
+.site-header__dock .atd-modern__item:nth-child(6)::after {
+  content: "Track my DBS";
+}
+
 .site-header__dock .atd-modern__item::after {
   font-size: var(--atd-label);
 }
@@ -5698,6 +5702,17 @@ html {
   max-width: 100%;
   overflow: visible;
   white-space: nowrap;
+}
+
+@media (max-width: 960px) and (min-width: 701px) {
+  .site-header__dock .atd-modern__bar {
+    gap: clamp(8px, 1.8vw, 20px);
+    padding: 5px 6px 5px 12px;
+  }
+
+  .site-header__dock .atd-modern__item {
+    padding-inline: 7px;
+  }
 }
 
 @media (max-width: 700px) {

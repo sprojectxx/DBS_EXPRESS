@@ -63,6 +63,7 @@ const ITEMS: readonly DockItem[] = [
   { id: "pricing", label: "Pricing", href: "/pricing", sectionId: "pricing", icon: <><rect x="2" y="3" width="12" height="10" rx="1.5" /><path d="M2 6h12M5 4.5h.01M7 4.5h.01" /></> },
   { id: "faq", label: "FAQs", href: "/faq", sectionId: "faq", icon: <><circle cx="5.2" cy="6.2" r="2.7" /><path d="m7.2 8.2 5.9 5.1M10.2 10.8l1.5-1.5M12 12.4l1.4-1.4" /></> },
   { id: "contact", label: "Contact", href: "/contact", sectionId: "contact", icon: <><path d="M4 2.25h5.4L12 4.85v8.9H4z" /><path d="M9.25 2.25V5h2.7M6 8h4M6 10.5h4" /></> },
+  { id: "track", label: "Track my DBS", href: "https://www.dbs-express.co.uk/app/login_direct", icon: <><circle cx="8" cy="8" r="5.5" /><path d="M8 2.5v11M2.5 8h11" /><circle cx="8" cy="8" r="2" /></> },
 ];
 
 const MODERN_ITEMS: readonly DockItem[] = [
@@ -71,6 +72,7 @@ const MODERN_ITEMS: readonly DockItem[] = [
   { id: "pricing", label: "Pricing", href: "/pricing", sectionId: "pricing", icon: <><path d="M8.6 2.2H13v4.4l-6.6 6.6a1.2 1.2 0 0 1-1.7 0L2.2 10.5a1.2 1.2 0 0 1 0-1.7z" /><circle cx="10.6" cy="4.6" r=".9" /></> },
   { id: "faq", label: "FAQs", href: "/faq", sectionId: "faq", icon: <><path d="M3.4 2.4h5.4l3.8 3.8v7.4H3.4z" /><path d="M8.8 2.4v3.8h3.8M5.9 9h4.2M5.9 11.2h3" /></> },
   { id: "contact", label: "Contact", href: "/contact", sectionId: "contact", icon: <><circle cx="8" cy="8" r="5.9" /><path d="M8 4.6V8l2.4 1.5" /></> },
+  { id: "track", label: "Track my DBS", href: "https://www.dbs-express.co.uk/app/login_direct", icon: <><circle cx="8" cy="8" r="5.8" /><path d="M8 2.5v2.2M8 11.3V13.5M2.5 8h2.2M11.3 8h2.2" /><circle cx="8" cy="8" r="1.8" /></> },
 ];
 
 /* every retro glyph is drawn on a 7x7 lattice of whole units so the icons stay
@@ -81,6 +83,7 @@ const RETRO_ITEMS: readonly DockItem[] = [
   { id: "pricing", label: "Pricing", href: "/pricing", sectionId: "pricing", icon: <><rect x="3" y="0" width="1" height="7" /><rect x="0" y="3" width="7" height="1" /><rect x="1" y="1" width="1" height="1" /><rect x="5" y="1" width="1" height="1" /><rect x="1" y="5" width="1" height="1" /><rect x="5" y="5" width="1" height="1" /></> },
   { id: "faq", label: "FAQs", href: "/faq", sectionId: "faq", icon: <><rect x="0" y="1" width="7" height="5" /><rect x="2" y="0" width="3" height="2" /><rect x="1" y="4" width="5" height="1" /></> },
   { id: "contact", label: "Contact", href: "/contact", sectionId: "contact", icon: <><rect x="2" y="0" width="3" height="1" /><rect x="4" y="1" width="2" height="2" /><rect x="3" y="3" width="2" height="1" /><rect x="3" y="4" width="1" height="1" /><rect x="3" y="6" width="1" height="1" /></> },
+  { id: "track", label: "Track my DBS", href: "https://www.dbs-express.co.uk/app/login_direct", icon: <><rect x="1" y="1" width="5" height="5" /><rect x="2" y="2" width="3" height="3" /><rect x="3" y="3" width="1" height="1" /></> },
 ];
 
 const GLASS_ITEMS: readonly DockItem[] = [
@@ -89,6 +92,7 @@ const GLASS_ITEMS: readonly DockItem[] = [
   { id: "pricing", label: "Pricing", href: "/pricing", sectionId: "pricing", icon: <><rect x="2.1" y="2.6" width="3" height="10.8" rx="1" /><rect x="6.4" y="2.6" width="3" height="10.8" rx="1" /><path d="m10.9 3.7 2.9 1-2.4 8.6-2.2-.8" /></> },
   { id: "faq", label: "FAQs", href: "/faq", sectionId: "faq", icon: <><path d="M1.8 10.6c2.6 0 3-5.2 6.2-5.2s3.6 5.2 6.2 5.2" /><circle cx="8" cy="5.4" r=".9" /></> },
   { id: "contact", label: "Contact", href: "/contact", sectionId: "contact", icon: <><path d="M6.4 2.2v4L3 12.1a1.3 1.3 0 0 0 1.1 2h7.8a1.3 1.3 0 0 0 1.1-2L9.6 6.2v-4" /><path d="M5.6 2.2h4.8M4.9 9.6h6.2" /></> },
+  { id: "track", label: "Track my DBS", href: "https://www.dbs-express.co.uk/app/login_direct", icon: <><circle cx="8" cy="8" r="5.5" /><circle cx="8" cy="8" r="2" /><path d="M8 1.5v3M8 11.5v3M1.5 8h3M11.5 8h3" /></> },
 ];
 
 const VARIANT_ITEMS: Record<AnimatedTopDockVariant, readonly DockItem[]> = {
@@ -300,27 +304,38 @@ export function AnimatedTopDock({ className = "", ...props }: AnimatedTopDockPro
       }
       return;
     }
+
+    // Case 4: External URL (e.g. "https://www.dbs-express.co.uk/app/login_direct")
+    if (item.href?.startsWith("http")) {
+      return;
+    }
   };
 
   const dockItems = (itemClass: string, iconClass: string, viewBox: string) =>
-    items.map((item) => (
-      <a
-        key={item.id}
-        href={item.href ?? "#"}
-        className={itemClass}
-        data-dock-item
-        role="button"
-        tabIndex={0}
-        aria-label={item.label}
-        aria-pressed={active === item.id}
-        onClick={(e) => navigateTo(e, item)}
-      >
-        <span className={iconClass} aria-hidden="true">
-          <svg viewBox={viewBox}>{item.icon}</svg>
-        </span>
-        <span>{item.label}</span>
-      </a>
-    ));
+    items.map((item) => {
+      const isExternal = item.href?.startsWith("http");
+      return (
+        <a
+          key={item.id}
+          href={item.href ?? "#"}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noreferrer noopener" : undefined}
+          className={itemClass}
+          data-dock-item
+          role="button"
+          tabIndex={0}
+          aria-label={item.label}
+          title={item.label}
+          aria-pressed={active === item.id}
+          onClick={(e) => navigateTo(e, item)}
+        >
+          <span className={iconClass} aria-hidden="true">
+            <svg viewBox={viewBox}>{item.icon}</svg>
+          </span>
+          <span>{item.label}</span>
+        </a>
+      );
+    });
 
   if (variant === "modern") {
     return (

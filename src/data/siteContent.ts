@@ -10,6 +10,7 @@ export const navigation = [
   { label: 'About', href: '/about' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Track my DBS', href: loginUrl },
 ]
 
 // Archived Direct Channels Information (preserved for future reference per client request)
