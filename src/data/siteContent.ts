@@ -1,6 +1,8 @@
 export const sourceSite = 'https://db-ssubmit.vercel.app'
 export const signUpUrl = 'https://www.dbs-express.co.uk/app/ci/index_controller/sign_up'
 export const loginUrl = 'https://www.dbs-express.co.uk/app/login_direct'
+export const dbsTrackingUrl =
+  'https://disclosure.homeoffice.gov.uk/HomeOfficeExternalPortal/faces/oracle/webcenter/portalapp/pages/StandAloneService.jspx?_adf.ctrl-state=169pj2cuqr_1&_afrLoop=5111340145309177&_afrWindowMode=0&_afrWindowId=null#!%40%40%3F_afrWindowId%3Dnull%26_afrLoop%3D5111340145309177%26_afrWindowMode%3D0%26_adf.ctrl-state%3D169pj2cuqr_5'
 
 export const navigation = [
   { label: 'Employers', href: '/employers' },
@@ -10,7 +12,7 @@ export const navigation = [
   { label: 'About', href: '/about' },
   { label: 'FAQ', href: '/faq' },
   { label: 'Contact', href: '/contact' },
-  { label: 'Track my DBS', href: loginUrl },
+  { label: 'Track my DBS', href: dbsTrackingUrl },
 ]
 
 // Archived Direct Channels Information (preserved for future reference per client request)
