@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
-import { signUpUrl } from '../data/siteContent'
+import { ContactEnquiryForm } from '../components/ContactEnquiryForm'
+import { directChannelsArchive, signUpUrl } from '../data/siteContent'
 import { SiteFooter } from '../components/SiteFooter'
 import { SiteHeader } from '../components/SiteHeader'
 
@@ -289,9 +290,28 @@ function FaqPage() {
   return <RouteLayout pageClassName="route-page--faq"><PageHero eyebrow="FAQ" title="Questions, made simpler." description="Find clear answers about DBS check levels, applications, eligibility, processing, and support." /><section className="faq-page section-pad"><label htmlFor="faq-search">Search questions</label><input id="faq-search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search the FAQ" />{filtered.length ? <div className="faq-page__list">{filtered.map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div> : <p className="faq-page__empty">No questions matched your search.</p>}</section></RouteLayout>
 }
 
+// Preserved for future reference: Direct channels information (archived from contact page)
+export const savedDirectChannelsInfo = directChannelsArchive
+
 function ContactPage() {
-  const emailUrl = 'https://mail.google.com/mail/?view=cm&fs=1&to=contact%40dbs-express.co.uk'
-  return <RouteLayout pageClassName="route-page--contact"><PageHero eyebrow="CONTACT" title="Get in touch" description="Our support team is available Monday–Friday, 9am–5pm. For DBS application status updates, log in to your dashboard directly." /><SectionList sections={[{ title: 'Direct channels', paragraphs: ['Reach our team by phone, email, or post for guidance on organisational registration and eligibility.', 'Office address: Talaty Group Ltd, London, United Kingdom', 'Phone support: 01254 432655. Lines open 9am–5pm, Mon–Fri', 'Email enquiry: contact@dbs-express.co.uk. Mon–Fri responses within 24 hours', 'If you have already submitted an application through our platform, please log in directly to your dashboard to view real-time tracking updates.'] }]} /><CtaBand title="Start Your Application" description="Connect directly with our compliance screening desk. Submissions received before 4pm UK time are dispatched same day." href={emailUrl} label="Start Application" /></RouteLayout>
+  return (
+    <RouteLayout pageClassName="route-page--contact">
+      <PageHero
+        eyebrow="CONTACT"
+        title="Get in touch"
+        description="Have questions about organisational registration, check eligibility, or candidate tracking? Submit your enquiry below and our compliance team will respond directly via email."
+      />
+      <div className="contact-page__wrap section-pad">
+        <ContactEnquiryForm />
+      </div>
+      <CtaBand
+        title="Ready to start your submission?"
+        description="Register your organisation or start an individual Basic DBS check online in under 10 minutes."
+        href="/pricing"
+        label="View Check Pricing"
+      />
+    </RouteLayout>
+  )
 }
 
 function MaintenancePage() {

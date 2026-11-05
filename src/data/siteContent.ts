@@ -12,6 +12,23 @@ export const navigation = [
   { label: 'Contact', href: '/contact' },
 ]
 
+// Archived Direct Channels Information (preserved for future reference per client request)
+export const directChannelsArchive = {
+  title: 'Direct channels',
+  description: 'Reach our team by phone, email, or post for guidance on organisational registration and eligibility.',
+  officeAddress: 'Talaty Group Ltd, London, United Kingdom',
+  phoneSupport: '01254 432655 (Lines open 9am–5pm, Mon–Fri)',
+  emailEnquiry: 'contact@dbs-express.co.uk (Mon–Fri responses within 24 hours)',
+  dashboardNotice: 'If you have already submitted an application through our platform, please log in directly to your dashboard to view real-time tracking updates.',
+  paragraphs: [
+    'Reach our team by phone, email, or post for guidance on organisational registration and eligibility.',
+    'Office address: Talaty Group Ltd, London, United Kingdom',
+    'Phone support: 01254 432655. Lines open 9am–5pm, Mon–Fri',
+    'Email enquiry: contact@dbs-express.co.uk. Mon–Fri responses within 24 hours',
+    'If you have already submitted an application through our platform, please log in directly to your dashboard to view real-time tracking updates.',
+  ],
+}
+
 // Client verification required before display: these promotional claims are retained as source material.
 export const benefits = [
   {
