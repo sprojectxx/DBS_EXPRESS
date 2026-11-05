@@ -200,7 +200,7 @@ function PricingSection({ variant }: { variant: PrototypeVariant }) {
           <h3 className="pricing-tier-card__title">Pay As You Go</h3>
           <p className="pricing-tier-card__volume">1 to 99 checks / year</p>
           <div className="pricing-tier-card__price">
-            <span className="pricing-tier-card__amount">£37.70</span>
+            <span className="pricing-tier-card__amount">£42.00</span>
             <span className="pricing-tier-card__unit">per check</span>
           </div>
           <p className="pricing-tier-card__desc">Ideal for small teams and occasional hires needing fast results.</p>

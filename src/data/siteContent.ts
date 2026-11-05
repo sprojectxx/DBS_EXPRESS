@@ -102,20 +102,20 @@ export const pricingTiers = [
   {
     tier: 'Tier 1',
     volume: '1 to 99 checks per year',
-    basicStandard: '£37.70',
-    enhanced: '£65.70',
+    basicStandard: '£42.00',
+    enhanced: '£73.00',
   },
   {
     tier: 'Tier 2',
     volume: '100 to 499 checks per year',
-    basicStandard: '£35.30',
-    enhanced: '£63.30',
+    basicStandard: '£39.50',
+    enhanced: '£70.50',
   },
   {
     tier: 'Tier 3',
     volume: '500 to 1,499 checks per year',
-    basicStandard: '£34.10',
-    enhanced: '£62.10',
+    basicStandard: '£38.00',
+    enhanced: '£69.00',
   },
 ]
 

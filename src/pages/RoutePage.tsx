@@ -112,12 +112,14 @@ function EmployersPage() {
   </RouteLayout>
 }
 
-const individualPricingHeaders = ['Check', 'Gov fee', 'Admin fee', 'Total']
+const individualPricingHeaders = ['Check', 'Gov fee', 'Admin fee', 'Total', 'Price change']
 
 const individualPricingRows = [
-  ['Basic', '£20.00', '£22.00', '£42.00 (no change)'],
-  ['Volunteer', '£0.00', '£18.00', '£18.00 (no change)'],
-  ['Digital ID', 'None', '£6.50', '£6.50 (no change)'],
+  ['Basic', '£20.00', '£22.00', '£42.00', 'No change'],
+  ['Enhanced (Volunteer)', '£0.00', '£19.00', '£19.00', '£18.00 → £19.00'],
+  ['Standard (Volunteer)', '£0.00', '£18.00', '£18.00', 'No change'],
+  ['Update Service Registration', '£15.00', '£4.00', '£19.00', 'No change'],
+  ['Digital ID Verification', 'None', '£6.50', '£6.50', 'No change'],
 ]
 
 function IndividualsPricingTable() {
@@ -140,10 +142,14 @@ function IndividualsPricingTable() {
                   data-label={individualPricingHeaders[idx]}
                   className={idx === 0 ? 'route-table__cell-tier' : idx === 3 ? 'route-table__cell-total' : undefined}
                 >
-                  {idx === 3 && cell.includes('(no change)') ? (
-                    <span className="route-table__total-wrap">
-                      <span className="route-table__total-amount">{cell.replace(' (no change)', '')}</span>
-                      <span className="route-table__no-change-tag">(no change)</span>
+                  {idx === 3 ? (
+                    <strong className="route-table__total-amount">{cell}</strong>
+                  ) : idx === 4 ? (
+                    <span
+                      className="route-table__no-change-tag"
+                      style={cell.includes('→') ? { background: '#fef3c7', color: '#92400e' } : undefined}
+                    >
+                      {cell}
                     </span>
                   ) : (
                     cell
@@ -161,7 +167,7 @@ function IndividualsPricingTable() {
 function IndividualsPage() {
   return <RouteLayout pageClassName="route-page--individuals">
     <PageHero eyebrow="INDIVIDUALS" title="Apply for your individual DBS check" description="Starting a new job, applying for a voluntary role, or completing a university placement? Apply online for your official DBS certificate in under 10 minutes with same-day processing for submissions before 4pm UK time." />
-    <div className="route-page__pricing section-pad" style={{ maxWidth: '820px', marginInline: 'auto' }}>
+    <div className="route-page__pricing section-pad" style={{ maxWidth: '880px', marginInline: 'auto' }}>
       <section className="route-price-card">
         <h2>Individual check pricing</h2>
         <p>Fixed, upfront fees with zero hidden charges. All government statutory charges included.</p>
@@ -169,7 +175,14 @@ function IndividualsPage() {
       </section>
     </div>
     <SectionList sections={[
-      { title: 'Transparent individual rates', paragraphs: ['Fixed, upfront fees with zero hidden charges. All government statutory charges included.', 'Basic DBS Check — £42.00 (£20.00 Gov Fee + £22.00 Admin Fee). Unspent criminal convictions and conditional cautions. Anyone can apply directly online.', 'Volunteer DBS Check — £18.00 (£0.00 Gov Fee waived + £18.00 Admin Fee). Eligible non-remunerated voluntary roles with charities, schools, and community groups.', 'Digital ID Verification — £6.50. Verifies your passport or driving licence digitally in 3 minutes without posting physical documents.'] },
+      { title: 'Transparent individual rates', paragraphs: [
+        'Fixed, upfront fees with zero hidden charges. All government statutory charges included.',
+        'Basic DBS Check — £42.00 (£20.00 Gov Fee + £22.00 Admin Fee). Unspent criminal convictions and conditional cautions. Anyone can apply directly online.',
+        'Enhanced Volunteer DBS Check — £19.00 (£0.00 Gov Fee waived + £19.00 Admin Fee). Eligible non-remunerated voluntary roles with vulnerable groups.',
+        'Standard Volunteer DBS Check — £18.00 (£0.00 Gov Fee waived + £18.00 Admin Fee). Eligible non-remunerated voluntary roles.',
+        'DBS Update Service Registration — £19.00 (£15.00 Gov Fee + £4.00 Admin Fee). Annual subscription to keep certificates continuously up to date.',
+        'Digital ID Verification — £6.50. Verifies your passport or driving licence digitally in 3 minutes without posting physical documents.'
+      ] },
       { title: 'Check eligibility & options', paragraphs: ['Under statutory rules, individuals can apply directly for a Basic DBS check. Standard and Enhanced checks require an employer request.'] },
       { title: 'Fast & paperless online applications', paragraphs: ['Our online application form takes under 10 minutes to complete. Digital identity checks eliminate the need to post original identity documents.'] },
     ]} />
@@ -177,18 +190,72 @@ function IndividualsPage() {
   </RouteLayout>
 }
 
+const servicePricingHeaders = ['Service', 'DBS fee', 'Our admin fee', 'Customer pays', 'Price change']
+
+const servicePricingRows = [
+  ['Basic', '£20.00', '£22.00', '£42.00', 'No change'],
+  ['Standard', '£20.00', '£22.00', '£42.00', 'No change'],
+  ['Enhanced', '£41.00', '£32.00', '£73.00', 'No change'],
+  ['Enhanced (Volunteer)', '£0.00', '£19.00', '£19.00', '£18.00 → £19.00'],
+  ['Update Service Registration', '£15.00', '£4.00', '£19.00', 'No change'],
+  ['Standard (Volunteer)', '£0.00', '£18.00', '£18.00', 'No change'],
+  ['Digital ID Verification', 'None', '£6.50', '£6.50', 'No change'],
+]
+
+function ServicePricingTable() {
+  return (
+    <div className="route-table-wrap" tabIndex={0} aria-label="Official DBS check service fee schedule">
+      <table className="route-table">
+        <thead>
+          <tr>
+            {servicePricingHeaders.map((header) => (
+              <th key={header}>{header}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {servicePricingRows.map((row) => (
+            <tr key={row[0]}>
+              {row.map((cell, idx) => (
+                <td
+                  key={idx}
+                  data-label={servicePricingHeaders[idx]}
+                  className={idx === 0 ? 'route-table__cell-tier' : idx === 3 ? 'route-table__cell-total' : undefined}
+                >
+                  {idx === 3 ? (
+                    <strong className="route-table__total-amount">{cell}</strong>
+                  ) : idx === 4 ? (
+                    <span
+                      className="route-table__no-change-tag"
+                      style={cell.includes('→') ? { background: '#fef3c7', color: '#92400e' } : undefined}
+                    >
+                      {cell}
+                    </span>
+                  ) : (
+                    cell
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
 const pricingHeaders = ['Tier', 'Gov fee', 'Admin fee', 'Total']
 
 const basicStandardPricingRows = [
-  ['Tier 1 (1–99 a year)', '£20.00', '£17.70', '£37.70 (no change)'],
-  ['Tier 2 (100–499 a year)', '£20.00', '£15.30', '£35.30 (no change)'],
-  ['Tier 3 (500–1,499 a year)', '£20.00', '£14.10', '£34.10 (no change)'],
+  ['Tier 1 (1–99 a year)', '£20.00', '£22.00', '£42.00 (no change)'],
+  ['Tier 2 (100–499 a year)', '£20.00', '£19.50', '£39.50 (no change)'],
+  ['Tier 3 (500–1,499 a year)', '£20.00', '£18.00', '£38.00 (no change)'],
 ]
 
 const enhancedPricingRows = [
-  ['Tier 1 (1–99 a year)', '£41.00', '£24.70', '£65.70 (no change)'],
-  ['Tier 2 (100–499 a year)', '£41.00', '£22.30', '£63.30 (no change)'],
-  ['Tier 3 (500–1,499 a year)', '£41.00', '£21.10', '£62.10 (no change)'],
+  ['Tier 1 (1–99 a year)', '£41.00', '£32.00', '£73.00 (no change)'],
+  ['Tier 2 (100–499 a year)', '£41.00', '£29.50', '£70.50 (no change)'],
+  ['Tier 3 (500–1,499 a year)', '£41.00', '£28.00', '£69.00 (no change)'],
 ]
 
 function PricingTable({ enhanced = false }: { enhanced?: boolean }) {
@@ -238,22 +305,29 @@ function PricingPage() {
         <h2>Clear, transparent DBS check pricing.</h2>
         <p>Official government disclosure fees with discounted administration charges. Full compliance with zero hidden subscription costs.</p>
         <div className="pricing-status-notice">
-          <span className="pricing-status-notice__badge">No change in total prices</span>
-          <span className="pricing-status-notice__text">All total fees to clients remain unchanged across every volume tier.</span>
+          <span className="pricing-status-notice__badge">Price schedule update</span>
+          <span className="pricing-status-notice__text">Customer totals remain unchanged across Basic (£42.00), Standard (£42.00), and Enhanced (£73.00). Official DBS fee reductions are balanced by administration fees.</span>
         </div>
-        <h3>Basic & Standard DBS Checks</h3>
+
+        <h3>Current Service Fee Schedule</h3>
+        <p>Official statutory disclosure charges and transparent portal administration fees.</p>
+        <ServicePricingTable />
+
+        <h3>Basic & Standard DBS Checks (Volume Tiers)</h3>
         <p>Priced by annual submission volume. Includes government fees and digital processing.</p>
         <PricingTable />
-        <h3>Enhanced DBS Checks</h3>
+
+        <h3>Enhanced DBS Checks (Volume Tiers)</h3>
         <p>For regulated activity roles in education, healthcare, childcare, and vulnerable adult care.</p>
         <PricingTable enhanced />
       </section>
       <SectionList className="pricing-billing-panel" sections={[{ title: 'Pricing & billing details', bullets: [
-        'Total client prices remain unchanged: Any statutory government fee revisions are fully balanced by our discounted administration rates, resulting in no change to total client costs.',
-        'Administration fees drop automatically as annual submission tiers increase: from £17.70 in Tier 1 down to £14.10 in Tier 3 (and from £24.70 down to £21.10 for Enhanced).',
+        'Total customer prices remain unchanged: Basic (£42.00), Standard (£42.00), and Enhanced (£73.00). Reductions in official government fees are balanced by our administration rates with no customer price increase.',
+        'Administration fees drop automatically as annual submission tiers increase: from £22.00 in Tier 1 down to £18.00 in Tier 3 (and from £32.00 down to £28.00 for Enhanced).',
         'Employers can choose whether the business covers 100% of the check fee, splits a designated percentage with the applicant, or has the applicant pay directly.',
-        'The UK government waives the disclosure fee for eligible non-remunerated voluntary roles (£0.00 gov fee). Only a flat £18.00 portal administration fee applies.',
-        'Digital ID allows candidates to securely verify their passport or driving licence and address from their phone.'
+        'The UK government waives statutory fees for eligible voluntary roles (£0.00 gov fee). Enhanced volunteer administration fee is £19.00 (Standard volunteer £18.00).',
+        'DBS Update Service registration is £19.00 total (£15.00 government fee + £4.00 administration fee).',
+        'Digital ID allows candidates to securely verify their passport or driving licence and address from their phone for £6.50.'
       ] }]} />
     </div>
     <CtaBand title="Ready to start your submission?" description="Set up an account in under 10 minutes. Submissions received before 4pm UK time are processed same-day." />
